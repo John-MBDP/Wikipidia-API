@@ -9,7 +9,7 @@
  * 5. Adjust UI states accordingly
  */
 
-const submitButton = document.querySelector("#Submit");
+const submitButton = document.querySelector("#submit");
 const input = document.querySelector("#input");
 const errorSpan = document.querySelector("#error");
 const resultsContainer = document.querySelector("#results");
@@ -49,3 +49,26 @@ const isInputEmpty = (input) => {
 const showError = (error) => {
   errorSpan.innerHTML = `❌${error}❌`;
 };
+
+const getData = async () => {
+  const userInput = input.value;
+  if (isInputEmpty(userInput)) return;
+  params.gsrsearch = userInput;
+  disableUi();
+
+  const { data } = await axios.get(endpoint, { params });
+
+  console.log(data);
+};
+
+const handleKeyEvent = (e) => {
+  if (e.key === "Enter") {
+    getData();
+  }
+};
+const registerEventHandlers = () => {
+  input.addEventListener("keydown", handleKeyEvent);
+  submitButton.addEventListener("click", getData);
+};
+
+registerEventHandlers();
