@@ -8,3 +8,31 @@
  * 4. Output results to the UI (success and error)
  * 5. Adjust UI states accordingly
  */
+
+const submitButton = document.querySelector("#Submit");
+const input = document.querySelector("#input");
+const errorSpan = document.querySelector("#error");
+const resultsContainer = document.querySelector("#results");
+
+const disableUi = () => {
+  input.disabled = true;
+  submitButton.disabled = true;
+};
+const enableUi = () => {
+  input.disabled = false;
+  submitButton.disabled = false;
+};
+
+const clearPreviousResults = () => {
+  resultsContainer.innerHTML = "";
+  errorSpan.innerHTML = "";
+};
+
+const isInputEmpty = (input) => {
+  if (!input || input === "") return true;
+  return false;
+};
+
+const showError = (error) => {
+  errorSpan.innerHTML = `❌${error}❌`;
+};
