@@ -24,3 +24,5 @@ Communication tool:
 ```
 
 ## Final Product
+
+![](docs/Wikipidia.webp)
